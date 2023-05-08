@@ -133,6 +133,10 @@ tmv_t get_raw_delay(struct tsproc *tsp)
 	t41 = tmv_sub(tsp->t4, tsp->t1);
 	delay = tmv_div(tmv_add(t23, t41), 2);
 
+	pr_debug("t1 %10" PRId64 " t2 %10" PRId64 " t3 %10" PRId64 " t4 %10" PRId64, 
+		tmv_to_nanoseconds(tsp->t1), tmv_to_nanoseconds(tsp->t2), tmv_to_nanoseconds(tsp->t3), tmv_to_nanoseconds(tsp->t4));
+
+
 	if (tmv_sign(delay) < 0) {
 		pr_debug("negative delay %10" PRId64,
 			 tmv_to_nanoseconds(delay));
